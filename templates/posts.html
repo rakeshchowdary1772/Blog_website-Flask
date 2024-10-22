@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+</head>
+<body>
+    {% if current_user.is_authenticated %}
+        <h3><a href="/profile/{{ current_user.username }}">Profile</a></h3>
+        <h3><a href="/create_post">Create Post</a></h3>
+        <h3><a href="/logout">Logout</a></h3>
+    {% else %}
+        <h3><a href="/login">Login</a></h3>
+        <h3><a href="/register_user">Register</a></h3>
+    {% endif %}
+
+    {% for post in posts %}
+    <div class="post">
+        <div class="post-title">
+            <h1>{{ post.title }}</h1>
+        </div>
+        
+        <p><strong>Author:</strong> {{ post.author.username }}</p>
+        <p>{{ post.content }}</p>
+
+        <!-- {% if current_user.is_authenticated and current_user == post.author %}
+            <h3><a href="/edit_post/{{ post.id }}">Edit</a></h3>
+            <h3><a href="/delete_post/{{ post.id }}">Delete</a></h3>
+        {% endif %} -->
+    </div>
+    {% endfor %}
+</body>
+</html>

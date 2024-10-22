@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+</head>
+<body>
+        <h1>{{ profile.username }} </h1>
+        <h3>{{ profile.email }}</h3>
+        {% for post in posts %}
+        <div class="user-post">
+            
+            
+            <div class="post-title">
+                <h4>{{ post.title }}</h4>
+            </div>
+            <p>{{ post.content }}</p>
+            <h3><a href="/delete_post/{{ post.id }}">delete post</a></h3>
+            <h3><a href="/edit_post/{{ post.id }}">edit post</a></h3>
+            
+        </div>
+        
+        {% endfor %}
+        <h3><a href="/edit_user/{{ profile.id }}">edit user</a></h3>
+        <h3><a href="/delete_user/{{ profile.username }}">delete user</a></h3>
+        <h3><a href="/logout">logout</a></h3>
+</body>
+</html>
